@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "bill"
+      POSTGRES_PASSWORD: "123456"
+    ports:
+      - "5432:5432"
+    networks:
+      app:
+        ipv4_address: 10.25.0.2
+networks:
+  app:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.25.0.0/16
+          gateway: 10.25.0.1
+
