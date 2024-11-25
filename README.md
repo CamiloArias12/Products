@@ -1,6 +1,7 @@
 
 # Product Management Application
 
+![image](https://github.com/user-attachments/assets/bcb9f75f-b8d5-4122-a0e3-94d57f2cea6f)
 
 ## Technologies Used
 
@@ -12,7 +13,6 @@
 - **Flyway**: Database migration tool for version control.
 
 ### Steps
-
 1. **Clone the repository**:
 
    ```bash
