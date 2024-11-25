@@ -20,7 +20,7 @@
    cd Products
    ```
 2. **Configure the database**:
-   - Create and confihure  PostgreSQL database 
+   - Create and configure  PostgreSQL database 
 
 4. **Run the application**:
 
