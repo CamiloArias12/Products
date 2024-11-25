@@ -16,7 +16,7 @@
 1. **Clone the repository**:
 
    ```bash
-   [git clone https://github.com/your-repository/prueba-backend.git](https://github.com/CamiloArias12/Products)
+   git clone https://github.com/CamiloArias12/Products
    cd Products
    ```
 2. **Configure the database**:
