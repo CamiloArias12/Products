@@ -11,15 +11,15 @@ import com.example.products.model.Product;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRes {
+public class ProductResDTO {
     private int id;
     public String name;
     public String description;
     public String price;
     public int currentStock;
 
-    public static ProductRes fromEntity(Product product) {
-        return new ProductRes(
+    public static ProductResDTO fromEntity(Product product) {
+        return new ProductResDTO(
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
@@ -27,8 +27,8 @@ public class ProductRes {
                 product.getCurrentStock());
     }
 
-    public static List<ProductRes> fromEntities(List<Product> products) {
-        List<ProductRes> productsRes = new ArrayList<>();
+    public static List<ProductResDTO> fromEntities(List<Product> products) {
+        List<ProductResDTO> productsRes = new ArrayList<>();
         for (Product product : products) {
             productsRes.add(fromEntity(product));
         }

@@ -1,96 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Order Management</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            margin: 20px;
-        }
-        .column {
-            width: 200px;
-            margin: 10px;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        .table-container {
-            margin-top: 30px;
-        }
-        table {
-            width: 80%;
-            margin: auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
+
 <body>
     <h1>Order Management</h1>
-    <div class="container">
-        <div class="column">
-            <h3>Available Products</h3>
-            <form id="product-form" th:action="@{/addProducts}" method="post">
-                <div th:each="product : ${products}">
-                    <label>
-                        <input type="checkbox" name="selectedProducts" th:value="${product.id}"> 
-                        <span th:text="${product.name}"></span>
-                    </label><br>
-                </div>
-                <div class="buttons">
-                    <button type="submit">Add Product(s) ➔</button>
-                </div>
-            </form>
-        </div>
-        
-        <div class="column">
-            <h3>Selected Products</h3>
-            <form th:action="@{/removeProducts}" method="post">
-                <div th:each="product : ${selectedProducts}">
-                    <label>
-                        <input type="checkbox" name="selectedProducts" th:value="${product.id}">
-                        <span th:text="${product.name}"></span>
-                    </label><br>
-                </div>
-                <div class="buttons">
-                    <button type="submit">← Remove Product(s)</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <div class="data">
 
-    <div class="buttons">
-        <form th:action="@{/generateOrder}" method="post">
-            <button type="submit">Generate Order</button>
-        </form>
-    </div>
+        <div class="container">
+            <div class="products">
+                <div class="column">
+                    <h3>Available Products</h3>
+                    <form id="product-form" th:action="@{/addProducts}" method="post">
+                        <div class="list">
 
-    <div class="table-container">
-        <h3>Orders</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Order No</th>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
-                </tr>
-            </thead>
-            <tbody th:each="order : ${orders}">
+                            <div th:each="product : ${products}">
+                                <label>
+                                    <input type="checkbox" name="selectedProducts" th:value="${product.id}">
+                                    <span th:text="${product.name}"></span>
+                                </label><br>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit">Add Product(s) ➔</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="column">
+                    <h3>Selected Products</h3>
+                    <form th:action="@{/removeProducts}" method="post">
+                        <div class="list">
+                            <div th:each="product : ${selectedProducts}">
+                                <label>
+                                    <input type="checkbox" name="selectedProducts" th:value="${product.id}">
+                                    <span th:text="${product.name}"></span>
+                                </label><br>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit">← Remove Product(s)</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="buttons">
+
+                <div th:if="${error}" style="color: red; margin-bottom: 1rem;">
+                    <p th:text="${error}"></p>
+                </div>
+                <form th:action="@{/generateOrder}" method="post">
+                    <button type="submit">Generate Order</button>
+                </form>
+            </div>
+        </div>
+        <div class="table-container">
+            <h3>Orders</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order No</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                    </tr>
+                </thead>
+                <tbody th:each="order : ${orders}">
                     <td th:text="${order.id}"></td>
                     <td th:text="${order.product.name}"></td>
                     <td th:text="${order.product.price}"></td>
-                </tr>
-            </tbody>
-        </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
+
 </html>

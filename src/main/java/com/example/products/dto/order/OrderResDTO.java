@@ -11,19 +11,19 @@ import com.example.products.model.Product;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderRes {
+public class OrderResDTO {
     private int id;
     public Product product;
 
-    public static OrderRes fromEntity(Order order) {
-        return new OrderRes(
+    public static OrderResDTO fromEntity(Order order) {
+        return new OrderResDTO(
                 order.getId(),
                 order.getProduct()
                 );
     }
 
-    public static List<OrderRes> fromEntities(List<Order> orders) {
-        List<OrderRes> ordersRes = new ArrayList<>();
+    public static List<OrderResDTO> fromEntities(List<Order> orders) {
+        List<OrderResDTO> ordersRes = new ArrayList<>();
         for (Order order : orders) {
             ordersRes.add(fromEntity(order));
         }
