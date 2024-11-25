@@ -12,7 +12,7 @@ public class CreateOrderReq implements Serializable {
     @NotNull(message = "The products array cannot be null")
     @NotEmpty(message = "There must be at least one product in the order")
     @Size(min = 1, message = "The order must contain at least one product")
-    private int[] products;
+    private Integer[] products;
 
 }
 

@@ -25,9 +25,6 @@ public class ProductRes {
                 product.getDescription(),
                 product.getPrice(),
                 product.getCurrentStock());
-
-
-
     }
 
     public static List<ProductRes> fromEntities(List<Product> products) {

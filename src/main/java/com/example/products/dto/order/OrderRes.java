@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.example.products.model.Order;
 import com.example.products.model.Product;
 
@@ -15,7 +14,6 @@ import com.example.products.model.Product;
 public class OrderRes {
     private int id;
     public Product product;
-
 
     public static OrderRes fromEntity(Order order) {
         return new OrderRes(
