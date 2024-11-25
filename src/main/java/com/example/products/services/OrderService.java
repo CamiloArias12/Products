@@ -1,4 +1,5 @@
 package com.example.products.services;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,24 +13,25 @@ import com.example.products.services.interfaces.IOrderService;
 @Service
 public class OrderService implements IOrderService {
        private final OrderRepository orderRepository;
-       private final ProductService productService;
 
 
-    public OrderService(OrderRepository orderRepository, ProductService productService) {
+    public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-        this.productService = productService;
     }
 
     @Override
-    public void create(Integer[] productIds) {
-        Order order = new Order();
-
-        for (Integer productId : productIds) {
-            Product product=productService.find(productId);
+    public void create(ArrayList<Product> products) {
+        Order order = new Order();        
+        Integer lastId = orderRepository.findLastOrderId();
+        Integer newId = lastId + 1;
+        
+        order.setId(newId);
+        for (Product product : products) {
             order.setProduct(product);
             orderRepository.save(order);
         }
     }
+    
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll();
