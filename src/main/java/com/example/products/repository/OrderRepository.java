@@ -6,6 +6,6 @@ import com.example.products.model.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
-     @Query("SELECT COALESCE(MAX(o.id), 0) FROM Order o")
+    @Query("SELECT COALESCE(MAX(o.id), 0) FROM Order o")
     Integer findLastOrderId();
 }

@@ -24,7 +24,6 @@ public class OrderService implements IOrderService {
         Order order = new Order();        
         Integer lastId = orderRepository.findLastOrderId();
         Integer newId = lastId + 1;
-        
         order.setId(newId);
         for (Product product : products) {
             order.setProduct(product);
