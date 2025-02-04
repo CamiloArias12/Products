@@ -23,6 +23,7 @@ public class OrderPk implements Serializable {
             OrderPk orderPk = (OrderPk) o;
             return Objects.equals(id, orderPk.id) &&
                         Objects.equals(product, orderPk.product);
+                        
       }
 
       @Override
